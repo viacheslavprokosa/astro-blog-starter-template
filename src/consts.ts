@@ -7,7 +7,7 @@ export const PERSONAL_INFO = {
     name: "Viacheslav Prokosa",
     title: "Senior Backend Engineer",
     subtitle: "Full-Stack Development & Technical Consulting",
-    location: "Ukraine",
+    location: "Hamburg, Germany",
     email: "", // To be added later
 
     summary: "Senior Backend Engineer with 10 years of commercial experience building scalable and maintainable backend systems. Strong expertise in PHP 8.2/8.3, Laravel, Symfony, MySQL, Redis, Docker, GCP, Kubernetes and distributed systems. Experienced in full development lifecycle, deployment automation, and technical consulting.",

@@ -1,0 +1,210 @@
+---
+// Beautiful realistic butterfly animation
+---
+
+<div class="butterfly-container">
+  <div class="butterfly">
+    <svg class="butterfly-svg" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Gradients for wings -->
+        <radialGradient id="upperWingGradient">
+          <stop offset="0%" style="stop-color:#a78bfa;stop-opacity:1" />
+          <stop offset="40%" style="stop-color:#8b5cf6;stop-opacity:0.95" />
+          <stop offset="80%" style="stop-color:#7c3aed;stop-opacity:0.85" />
+          <stop offset="100%" style="stop-color:#6d28d9;stop-opacity:0.7" />
+        </radialGradient>
+        
+        <radialGradient id="lowerWingGradient">
+          <stop offset="0%" style="stop-color:#f9a8d4;stop-opacity:1" />
+          <stop offset="40%" style="stop-color:#f472b6;stop-opacity:0.95" />
+          <stop offset="80%" style="stop-color:#ec4899;stop-opacity:0.85" />
+          <stop offset="100%" style="stop-color:#db2777;stop-opacity:0.7" />
+        </radialGradient>
+        
+        <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#1e1b4b;stop-opacity:1" />
+          <stop offset="50%" style="stop-color:#4c1d95;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#1e1b4b;stop-opacity:1" />
+        </linearGradient>
+        
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      
+      <!-- Left Wings Group -->
+      <g class="wing-left">
+        <!-- Upper Left Wing -->
+        <path d="M 60 45 
+                 C 40 35, 20 30, 10 35
+                 C 5 40, 5 50, 10 55
+                 C 20 65, 40 60, 55 52
+                 C 58 50, 60 47, 60 45 Z" 
+              fill="url(#upperWingGradient)" 
+              stroke="#6d28d9" 
+              stroke-width="1"
+              opacity="0.95"/>
+        
+        <!-- Lower Left Wing -->
+        <path d="M 60 55
+                 C 50 60, 35 65, 25 68
+                 C 18 70, 15 75, 18 80
+                 C 22 85, 30 85, 40 82
+                 C 50 78, 58 68, 60 60
+                 C 60 58, 60 56, 60 55 Z"
+              fill="url(#lowerWingGradient)"
+              stroke="#db2777"
+              stroke-width="1"
+              opacity="0.95"/>
+        
+        <!-- Wing Spots Left Upper -->
+        <ellipse cx="30" cy="45" rx="8" ry="10" fill="rgba(255,255,255,0.4)" opacity="0.8"/>
+        <ellipse cx="25" cy="50" rx="5" ry="6" fill="rgba(255,255,255,0.3)" opacity="0.7"/>
+        <circle cx="40" cy="48" r="4" fill="rgba(6,182,212,0.5)" opacity="0.8"/>
+        
+        <!-- Wing Spots Left Lower -->
+        <ellipse cx="35" cy="72" rx="6" ry="7" fill="rgba(255,255,255,0.35)" opacity="0.8"/>
+        <circle cx="28" cy="75" r="3.5" fill="rgba(255,255,255,0.25)" opacity="0.7"/>
+      </g>
+      
+      <!-- Right Wings Group -->
+      <g class="wing-right">
+        <!-- Upper Right Wing -->
+        <path d="M 60 45
+                 C 80 35, 100 30, 110 35
+                 C 115 40, 115 50, 110 55
+                 C 100 65, 80 60, 65 52
+                 C 62 50, 60 47, 60 45 Z"
+              fill="url(#upperWingGradient)"
+              stroke="#6d28d9"
+              stroke-width="1"
+              opacity="0.95"/>
+        
+        <!-- Lower Right Wing -->
+        <path d="M 60 55
+                 C 70 60, 85 65, 95 68
+                 C 102 70, 105 75, 102 80
+                 C 98 85, 90 85, 80 82
+                 C 70 78, 62 68, 60 60
+                 C 60 58, 60 56, 60 55 Z"
+              fill="url(#lowerWingGradient)"
+              stroke="#db2777"
+              stroke-width="1"
+              opacity="0.95"/>
+        
+        <!-- Wing Spots Right Upper -->
+        <ellipse cx="90" cy="45" rx="8" ry="10" fill="rgba(255,255,255,0.4)" opacity="0.8"/>
+        <ellipse cx="95" cy="50" rx="5" ry="6" fill="rgba(255,255,255,0.3)" opacity="0.7"/>
+        <circle cx="80" cy="48" r="4" fill="rgba(6,182,212,0.5)" opacity="0.8"/>
+        
+        <!-- Wing Spots Right Lower -->
+        <ellipse cx="85" cy="72" rx="6" ry="7" fill="rgba(255,255,255,0.35)" opacity="0.8"/>
+        <circle cx="92" cy="75" r="3.5" fill="rgba(255,255,255,0.25)" opacity="0.7"/>
+      </g>
+      
+      <!-- Body (drawn last to be on top) -->
+      <ellipse cx="60" cy="50" rx="4" ry="25" fill="url(#bodyGradient)" stroke="#1e1b4b" stroke-width="1"/>
+      
+      <!-- Head -->
+      <circle cx="60" cy="30" r="5" fill="#1e1b4b" stroke="#4c1d95" stroke-width="1"/>
+      
+      <!-- Antennae -->
+      <path d="M 58 28 Q 52 20, 50 15" stroke="#4c1d95" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M 62 28 Q 68 20, 70 15" stroke="#4c1d95" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <circle cx="50" cy="15" r="2" fill="#8b5cf6"/>
+      <circle cx="70" cy="15" r="2" fill="#8b5cf6"/>
+    </svg>
+  </div>
+</div>
+
+<style>
+  .butterfly-container {
+    position: absolute;
+    top: 200px;
+    right: 10%;
+    width: 120px;
+    height: 100px;
+    pointer-events: none;
+    z-index: 100;
+  }
+  
+  .butterfly {
+    position: relative;
+    width: 120px;
+    height: 100px;
+    filter: drop-shadow(0 4px 20px rgba(139, 92, 246, 0.6));
+  }
+  
+  .butterfly-svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .wing-left {
+    transform-origin: 60px 50px;
+    animation: flap-left 0.5s ease-in-out infinite;
+  }
+  
+  .wing-right {
+    transform-origin: 60px 50px;
+    animation: flap-right 0.5s ease-in-out infinite;
+  }
+  
+  /* Butterfly stays in place, only wings flap */
+  
+  @keyframes flap-left {
+    0%, 100% {
+      transform: perspective(200px) rotateY(0deg);
+    }
+    50% {
+      transform: perspective(200px) rotateY(-50deg);
+    }
+  }
+  
+  @keyframes flap-right {
+    0%, 100% {
+      transform: perspective(200px) rotateY(0deg);
+    }
+    50% {
+      transform: perspective(200px) rotateY(50deg);
+    }
+  }
+  
+  /* Tablet */
+  @media (max-width: 1024px) {
+    .butterfly {
+      width: 100px;
+      height: 83px;
+    }
+  }
+  
+  /* Mobile */
+  @media (max-width: 768px) {
+    .butterfly-container {
+      top: 150px;
+      right: 5%;
+    }
+    
+    .butterfly {
+      width: 80px;
+      height: 67px;
+    }
+  }
+  
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    .butterfly {
+      animation: none;
+      display: none;
+    }
+    
+    .wing-left,
+    .wing-right {
+      animation: none;
+    }
+  }
+</style>
