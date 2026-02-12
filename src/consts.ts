@@ -8,7 +8,7 @@ export const PERSONAL_INFO = {
     title: "Senior Backend Engineer",
     subtitle: "Full-Stack Development & Technical Consulting",
     location: "Hamburg, Germany",
-    email: "", // To be added later
+    email: "contact@prokosa.dev",
 
     summary: "Senior Backend Engineer with 10 years of commercial experience building scalable and maintainable backend systems. Strong expertise in PHP 8.2/8.3, Laravel, Symfony, MySQL, Redis, Docker, GCP, Kubernetes and distributed systems. Experienced in full development lifecycle, deployment automation, and technical consulting.",
 
@@ -57,10 +57,25 @@ export const SKILLS = {
 // Work Experience
 export const EXPERIENCE = [
     {
+        position: "Open Source Developer",
+        company: "Open Source Contributions",
+        duration: "1 year",
+        period: "2025 - Present",
+        description: "Contributing to open source projects and infrastructure automation tools.",
+        achievements: [
+            "Active contributions to Kubernetes ecosystem projects",
+            "Development of automation scripts and tools in Bash and Python",
+            "Infrastructure as Code implementations",
+            "Documentation improvements and bug fixes",
+            "Community engagement and code reviews"
+        ],
+        technologies: ["Kubernetes", "Bash", "Python", "PHP", "CI/CD", "Docker"]
+    },
+    {
         position: "Senior Backend Developer",
         company: "Marketing SaaS Platform",
         duration: "7 years",
-        period: "2018 - Present",
+        period: "2018 - 2025",
         description: "Led development of a marketing SaaS platform for analytics, automation and business process optimization.",
         achievements: [
             "Led large-scale refactoring of legacy system improving performance and stability",

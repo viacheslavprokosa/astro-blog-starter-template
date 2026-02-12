@@ -16,7 +16,7 @@ import { PERSONAL_INFO } from '../consts';
       </h1>
       
       <div class="hero-subtitle">
-        <span class="typing-text" data-text={PERSONAL_INFO.title}></span>
+        <span class="typing-text"></span>
         <span class="cursor">|</span>
       </div>
       
@@ -318,17 +318,55 @@ import { PERSONAL_INFO } from '../consts';
 </style>
 
 <script>
-  // Typing animation
+  // Rotating typing animation
   const typingText = document.querySelector('.typing-text');
   if (typingText) {
-    const text = typingText.getAttribute('data-text') || '';
-    let index = 0;
+    const titles = [
+      'Senior Backend Engineer',
+      'Cloud & DevOps Enthusiast',
+      'Technical Consultant'
+    ];
+    
+    let titleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let isPaused = false;
     
     function type() {
-      if (index < text.length) {
-        typingText.textContent = text.substring(0, index + 1);
-        index++;
-        setTimeout(type, 100);
+      const currentTitle = titles[titleIndex];
+      
+      if (isPaused) {
+        setTimeout(type, 2000); // Pause for 2 seconds before deleting
+        isPaused = false;
+        isDeleting = true;
+        return;
+      }
+      
+      if (isDeleting) {
+        // Delete characters
+        typingText.textContent = currentTitle.substring(0, charIndex - 1);
+        charIndex--;
+        
+        if (charIndex === 0) {
+          isDeleting = false;
+          titleIndex = (titleIndex + 1) % titles.length; // Move to next title
+          setTimeout(type, 500); // Pause before typing next title
+          return;
+        }
+        
+        setTimeout(type, 50); // Faster deletion
+      } else {
+        // Type characters
+        typingText.textContent = currentTitle.substring(0, charIndex + 1);
+        charIndex++;
+        
+        if (charIndex === currentTitle.length) {
+          isPaused = true;
+          setTimeout(type, 2000); // Pause when complete
+          return;
+        }
+        
+        setTimeout(type, 100); // Normal typing speed
       }
     }
     
