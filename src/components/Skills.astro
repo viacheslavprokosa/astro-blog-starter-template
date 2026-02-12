@@ -1,0 +1,291 @@
+---
+import { SKILLS } from '../consts';
+---
+
+<section id="skills" class="section skills-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="gradient-text">Technical Expertise</span>
+      </h2>
+      <p class="section-description">
+        10 years of experience building scalable backend systems and modern infrastructure
+      </p>
+    </div>
+    
+    <div class="skills-grid">
+      <!-- Backend Skills -->
+      <div class="skill-category">
+        <h3 class="category-title">
+          <svg class="category-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <rect x="2" y="3" width="20" height="14" rx="2" stroke-width="2"/>
+            <line x1="8" y1="21" x2="16" y2="21" stroke-width="2" stroke-linecap="round"/>
+            <line x1="12" y1="17" x2="12" y2="21" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Backend Development
+        </h3>
+        <div class="skills-list">
+          {SKILLS.backend.map(skill => (
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">{skill.name}</span>
+                <span class="skill-years">{skill.years} years</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style={`width: ${skill.level}%`}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <!-- DevOps Skills -->
+      <div class="skill-category">
+        <h3 class="category-title">
+          <svg class="category-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="10" stroke-width="2"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke-width="2"/>
+            <path d="M2 12h20" stroke-width="2"/>
+          </svg>
+          DevOps & Cloud
+        </h3>
+        <div class="skills-list">
+          {SKILLS.devops.map(skill => (
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">{skill.name}</span>
+                <span class="skill-years">{skill.years} years</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style={`width: ${skill.level}%`}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <!-- Architecture Skills -->
+      <div class="skill-category">
+        <h3 class="category-title">
+          <svg class="category-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 17l10 5 10-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12l10 5 10-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Architecture & Design
+        </h3>
+        <div class="skills-list">
+          {SKILLS.architecture.map(skill => (
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">{skill.name}</span>
+                <span class="skill-years">{skill.years} years</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style={`width: ${skill.level}%`}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <!-- Other Skills -->
+      <div class="skill-category">
+        <h3 class="category-title">
+          <svg class="category-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <polyline points="16 18 22 12 16 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="8 6 2 12 8 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Additional Tools
+        </h3>
+        <div class="skills-list">
+          {SKILLS.other.map(skill => (
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">{skill.name}</span>
+                <span class="skill-years">{skill.years} years</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style={`width: ${skill.level}%`}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-section {
+    background: linear-gradient(180deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-4xl);
+  }
+  
+  .section-title {
+    font-size: var(--font-size-5xl);
+    font-weight: var(--font-weight-extrabold);
+    margin-bottom: var(--space-md);
+  }
+  
+  .section-description {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-2xl);
+  }
+  
+  .skill-category {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-2xl);
+    transition: all var(--transition-base);
+  }
+  
+  .skill-category:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .category-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-xl);
+    color: var(--color-text-primary);
+  }
+  
+  .category-icon {
+    color: var(--color-accent-purple);
+  }
+  
+  .skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  
+  .skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  
+  .skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .skill-name {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+  }
+  
+  .skill-years {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+  }
+  
+  .skill-bar {
+    height: 8px;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .skill-progress {
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    transition: width 1s ease-out;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+      font-size: var(--font-size-4xl);
+    }
+    
+    .section-description {
+      font-size: var(--font-size-lg);
+    }
+  }
+</style>
+
+<script>
+  // Animate skill bars on scroll
+  const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const progressBars = entry.target.querySelectorAll('.skill-progress');
+        progressBars.forEach(bar => {
+          const width = bar.style.width;
+          bar.style.width = '0%';
+          setTimeout(() => {
+            bar.style.width = width;
+          }, 100);
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  const skillsSection = document.querySelector('.skills-section');
+  if (skillsSection) {
+    observer.observe(skillsSection);
+  }
+</script>

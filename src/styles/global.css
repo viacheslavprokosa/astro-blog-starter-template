@@ -1,155 +1,242 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import './design-system.css';
 
-:root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-		0 16px 32px rgba(var(--gray), 33%);
-}
-@font-face {
-	font-family: "Atkinson";
-	src: url("/fonts/atkinson-regular.woff") format("woff");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-@font-face {
-	font-family: "Atkinson";
-	src: url("/fonts/atkinson-bold.woff") format("woff");
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
-}
-body {
-	font-family: "Atkinson", sans-serif;
+/* Global Resets and Base Styles */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
-	background-size: 100% 600px;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	color: rgb(var(--gray-dark));
-	font-size: 20px;
-	line-height: 1.7;
 }
-main {
-	width: 720px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 3em 1em;
+
+html {
+	scroll-behavior: smooth;
+	font-size: 16px;
 }
+
+body {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-base);
+	line-height: var(--line-height-normal);
+	color: var(--color-text-primary);
+	background-color: var(--color-bg-primary);
+	background-image: var(--gradient-mesh);
+	background-attachment: fixed;
+	overflow-x: hidden;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--gradient-primary);
+	border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--gradient-secondary);
+}
+
+/* Firefox Scrollbar */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--color-accent-purple) var(--color-bg-secondary);
+}
+
+/* Typography */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
-	line-height: 1.2;
+	font-weight: var(--font-weight-bold);
+	line-height: var(--line-height-tight);
+	color: var(--color-text-primary);
+	margin-bottom: var(--space-md);
 }
+
 h1 {
-	font-size: 3.052em;
+	font-size: var(--font-size-6xl);
+	font-weight: var(--font-weight-extrabold);
 }
+
 h2 {
-	font-size: 2.441em;
+	font-size: var(--font-size-5xl);
 }
+
 h3 {
-	font-size: 1.953em;
+	font-size: var(--font-size-4xl);
 }
+
 h4 {
-	font-size: 1.563em;
+	font-size: var(--font-size-3xl);
 }
+
 h5 {
-	font-size: 1.25em;
+	font-size: var(--font-size-2xl);
 }
-strong,
-b {
-	font-weight: 700;
+
+h6 {
+	font-size: var(--font-size-xl);
 }
-a {
-	color: var(--accent);
-}
-a:hover {
-	color: var(--accent);
-}
+
 p {
-	margin-bottom: 1em;
+	margin-bottom: var(--space-md);
+	color: var(--color-text-secondary);
+	line-height: var(--line-height-relaxed);
 }
-.prose p {
-	margin-bottom: 2em;
+
+a {
+	color: var(--color-accent-blue);
+	text-decoration: none;
+	transition: color var(--transition-fast);
 }
-textarea {
-	width: 100%;
-	font-size: 16px;
+
+a:hover {
+	color: var(--color-accent-cyan);
 }
-input {
-	font-size: 16px;
+
+code {
+	font-family: var(--font-mono);
+	font-size: 0.9em;
+	padding: var(--space-xs) var(--space-sm);
+	background: var(--color-bg-tertiary);
+	border-radius: var(--radius-sm);
+	color: var(--color-accent-cyan);
 }
-table {
-	width: 100%;
+
+pre {
+	font-family: var(--font-mono);
+	padding: var(--space-lg);
+	background: var(--color-bg-tertiary);
+	border-radius: var(--radius-lg);
+	overflow-x: auto;
+	margin-bottom: var(--space-lg);
+	border: 1px solid var(--glass-border);
 }
+
+pre code {
+	padding: 0;
+	background: none;
+}
+
+/* Lists */
+ul,
+ol {
+	margin-bottom: var(--space-md);
+	padding-left: var(--space-xl);
+	color: var(--color-text-secondary);
+}
+
+li {
+	margin-bottom: var(--space-sm);
+	line-height: var(--line-height-relaxed);
+}
+
+/* Images */
 img {
 	max-width: 100%;
 	height: auto;
-	border-radius: 8px;
+	display: block;
+	border-radius: var(--radius-lg);
 }
-code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
-}
-pre {
-	padding: 1.5em;
-	border-radius: 8px;
-}
-pre > code {
-	all: unset;
-}
-blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0px;
-	font-size: 1.333em;
-}
-hr {
+
+/* Buttons */
+button {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-base);
+	cursor: pointer;
 	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
+	background: none;
 }
-@media (max-width: 720px) {
-	body {
-		font-size: 18px;
+
+/* Selection */
+::selection {
+	background: var(--color-accent-purple);
+	color: var(--color-text-primary);
+}
+
+::-moz-selection {
+	background: var(--color-accent-purple);
+	color: var(--color-text-primary);
+}
+
+/* Focus Styles */
+:focus-visible {
+	outline: 2px solid var(--color-accent-purple);
+	outline-offset: 2px;
+	border-radius: var(--radius-sm);
+}
+
+/* Main Content */
+main {
+	min-height: 100vh;
+	position: relative;
+	z-index: var(--z-base);
+}
+
+/* Accessibility */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+/* Loading State */
+.loading {
+	opacity: 0.6;
+	pointer-events: none;
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+	html {
+		font-size: 14px;
 	}
-	main {
-		padding: 1em;
+
+	h1 {
+		font-size: var(--font-size-5xl);
+	}
+
+	h2 {
+		font-size: var(--font-size-4xl);
+	}
+
+	h3 {
+		font-size: var(--font-size-3xl);
 	}
 }
 
-.sr-only {
-	border: 0;
-	padding: 0;
-	margin: 0;
-	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
-	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
-	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
-	white-space: nowrap;
+@media (max-width: 640px) {
+	html {
+		font-size: 14px;
+	}
+}
+
+/* Print Styles */
+@media print {
+	body {
+		background: white;
+		color: black;
+	}
+
+	.no-print {
+		display: none !important;
+	}
 }

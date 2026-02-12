@@ -1,0 +1,270 @@
+---
+import { EXPERIENCE } from '../consts';
+---
+
+<section id="experience" class="section experience-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="gradient-text">Work Experience</span>
+      </h2>
+      <p class="section-description">
+        Professional journey building scalable systems and leading technical initiatives
+      </p>
+    </div>
+    
+    <div class="timeline">
+      {EXPERIENCE.map((job, index) => (
+        <div class="timeline-item" style={`animation-delay: ${index * 0.2}s`}>
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+            {index < EXPERIENCE.length - 1 && <div class="timeline-line"></div>}
+          </div>
+          
+          <div class="timeline-content">
+            <div class="job-header">
+              <div>
+                <h3 class="job-position">{job.position}</h3>
+                <p class="job-company">{job.company}</p>
+              </div>
+              <div class="job-period">
+                <span class="period-badge">{job.period}</span>
+                <span class="duration-badge">{job.duration}</span>
+              </div>
+            </div>
+            
+            <p class="job-description">{job.description}</p>
+            
+            <div class="job-achievements">
+              <h4 class="achievements-title">Key Achievements:</h4>
+              <ul class="achievements-list">
+                {job.achievements.map(achievement => (
+                  <li>{achievement}</li>
+                ))}
+              </ul>
+            </div>
+            
+            <div class="job-tech">
+              {job.technologies.map(tech => (
+                <span class="tech-tag">{tech}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience-section {
+    background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
+  }
+  
+  .timeline {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-4xl);
+    opacity: 0;
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  .timeline-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    box-shadow: 0 0 0 4px var(--color-bg-secondary), 0 0 20px rgba(139, 92, 246, 0.5);
+    position: relative;
+    z-index: 2;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .timeline-line {
+    width: 2px;
+    flex: 1;
+    background: linear-gradient(180deg, var(--color-accent-purple) 0%, transparent 100%);
+    margin-top: var(--space-md);
+  }
+  
+  .timeline-content {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-2xl);
+    transition: all var(--transition-base);
+  }
+  
+  .timeline-content:hover {
+    transform: translateX(8px);
+    box-shadow: var(--shadow-xl);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+    flex-wrap: wrap;
+  }
+  
+  .job-position {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-xs) 0;
+  }
+  
+  .job-company {
+    font-size: var(--font-size-lg);
+    color: var(--color-accent-cyan);
+    margin: 0;
+  }
+  
+  .job-period {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-xs);
+  }
+  
+  .period-badge {
+    font-size: var(--font-size-sm);
+    font-family: var(--font-mono);
+    color: var(--color-text-secondary);
+  }
+  
+  .duration-badge {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    padding: var(--space-xs) var(--space-md);
+    background: var(--gradient-primary);
+    color: var(--color-text-primary);
+    border-radius: var(--radius-full);
+  }
+  
+  .job-description {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .achievements-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-accent-purple);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+  }
+  
+  .achievements-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-lg) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  
+  .achievements-list li {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    padding-left: var(--space-lg);
+    position: relative;
+    line-height: var(--line-height-relaxed);
+  }
+  
+  .achievements-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent-cyan);
+    font-weight: bold;
+  }
+  
+  .job-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--glass-border);
+  }
+  
+  .tech-tag {
+    font-size: var(--font-size-xs);
+    font-family: var(--font-mono);
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--glass-border);
+  }
+  
+  @media (max-width: 768px) {
+    .timeline-item {
+      grid-template-columns: 40px 1fr;
+      gap: var(--space-lg);
+    }
+    
+    .timeline-dot {
+      width: 16px;
+      height: 16px;
+    }
+    
+    .job-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .job-period {
+      align-items: flex-start;
+    }
+    
+    .timeline-content:hover {
+      transform: translateX(4px);
+    }
+  }
+</style>
+
+<script>
+  // Animate timeline items on scroll
+  const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  timelineItems.forEach(item => observer.observe(item));
+</script>
