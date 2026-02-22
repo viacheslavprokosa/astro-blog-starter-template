@@ -90,7 +90,7 @@ export const EXPERIENCE = [
     },
     {
         position: "Freelance PHP Developer",
-        company: "Self-employed",
+        company: "Freelancer",
         duration: "3 years",
         period: "2015 - 2018",
         description: "Development and maintenance of custom solutions for small and medium businesses.",
@@ -100,11 +100,11 @@ export const EXPERIENCE = [
             "Building integrations, automation tools, internal dashboards",
             "Full-cycle delivery: requirements, architecture, coding, testing, deployment, support"
         ],
-        technologies: ["PHP", "Laravel", "Symfony", "MySQL", "JavaScript"]
+        technologies: ["PHP", "Laravel", "MySQL", "JavaScript"]
     }
 ];
 
-// Featured Projects (placeholder - to be updated with real projects)
+// Featured Projects
 export const PROJECTS = [
     {
         title: "Marketing SaaS Platform",
@@ -115,6 +115,7 @@ export const PROJECTS = [
             "Implemented real-time analytics processing",
             "Built integration layer for 20+ external services"
         ],
+        nda: true,
         links: {
             demo: "",
             github: ""
@@ -129,6 +130,7 @@ export const PROJECTS = [
             "Implemented circuit breaker for resilience",
             "Added Prometheus metrics for monitoring"
         ],
+        nda: true,
         links: {
             demo: "",
             github: ""
@@ -143,6 +145,7 @@ export const PROJECTS = [
             "Implemented cert-manager for SSL automation",
             "Set up monitoring with Prometheus and Grafana"
         ],
+        nda: true,
         links: {
             demo: "",
             github: ""
