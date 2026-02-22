@@ -23,9 +23,8 @@ import { PERSONAL_INFO } from '../consts';
         Hi, I'm <span class="gradient-text">{PERSONAL_INFO.name}</span>
       </h1>
       
-      <div class="hero-subtitle">
-        <span class="typing-text"></span>
-        <span class="cursor">|</span>
+      <div class="hero-subtitle animate-slide-up" style="animation-delay: 0.1s;">
+        {PERSONAL_INFO.title}
       </div>
       
       <p class="hero-description animate-fade-in">
@@ -193,15 +192,7 @@ import { PERSONAL_INFO } from '../consts';
     gap: 0.25rem;
   }
   
-  .typing-text {
-    display: inline-block;
-  }
-  
-  .cursor {
-    display: inline-block;
-    color: var(--color-accent-purple);
-    animation: blink 1s step-end infinite;
-  }
+
   
   .hero-description {
     font-size: var(--font-size-lg);
@@ -379,60 +370,3 @@ import { PERSONAL_INFO } from '../consts';
   }
 </style>
 
-<script>
-  // Rotating typing animation
-  const typingText = document.querySelector('.typing-text');
-  if (typingText) {
-    const titles = [
-      'Senior Backend Engineer',
-      'Cloud & DevOps Enthusiast',
-      'Technical Consultant'
-    ];
-    
-    let titleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let isPaused = false;
-    
-    function type() {
-      const currentTitle = titles[titleIndex];
-      
-      if (isPaused) {
-        setTimeout(type, 2000); // Pause for 2 seconds before deleting
-        isPaused = false;
-        isDeleting = true;
-        return;
-      }
-      
-      if (isDeleting) {
-        // Delete characters
-        typingText.textContent = currentTitle.substring(0, charIndex - 1);
-        charIndex--;
-        
-        if (charIndex === 0) {
-          isDeleting = false;
-          titleIndex = (titleIndex + 1) % titles.length; // Move to next title
-          setTimeout(type, 500); // Pause before typing next title
-          return;
-        }
-        
-        setTimeout(type, 50); // Faster deletion
-      } else {
-        // Type characters
-        typingText.textContent = currentTitle.substring(0, charIndex + 1);
-        charIndex++;
-        
-        if (charIndex === currentTitle.length) {
-          isPaused = true;
-          setTimeout(type, 2000); // Pause when complete
-          return;
-        }
-        
-        setTimeout(type, 100); // Normal typing speed
-      }
-    }
-    
-    // Start typing after a short delay
-    setTimeout(type, 500);
-  }
-</script>

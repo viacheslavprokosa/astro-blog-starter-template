@@ -26,14 +26,9 @@ import { SKILLS } from '../consts';
         </h3>
         <div class="skills-list">
           {SKILLS.backend.map(skill => (
-            <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">{skill.name}</span>
-                <span class="skill-years">{skill.years} years</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" style={`width: ${skill.level}%`}></div>
-              </div>
+            <div class="skill-badge">
+              <span class="skill-name">{skill.name}</span>
+              <span class="skill-years">{skill.years} yrs</span>
             </div>
           ))}
         </div>
@@ -51,14 +46,9 @@ import { SKILLS } from '../consts';
         </h3>
         <div class="skills-list">
           {SKILLS.devops.map(skill => (
-            <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">{skill.name}</span>
-                <span class="skill-years">{skill.years} years</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" style={`width: ${skill.level}%`}></div>
-              </div>
+            <div class="skill-badge">
+              <span class="skill-name">{skill.name}</span>
+              <span class="skill-years">{skill.years} yrs</span>
             </div>
           ))}
         </div>
@@ -76,14 +66,9 @@ import { SKILLS } from '../consts';
         </h3>
         <div class="skills-list">
           {SKILLS.architecture.map(skill => (
-            <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">{skill.name}</span>
-                <span class="skill-years">{skill.years} years</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" style={`width: ${skill.level}%`}></div>
-              </div>
+            <div class="skill-badge">
+              <span class="skill-name">{skill.name}</span>
+              <span class="skill-years">{skill.years} yrs</span>
             </div>
           ))}
         </div>
@@ -100,14 +85,9 @@ import { SKILLS } from '../consts';
         </h3>
         <div class="skills-list">
           {SKILLS.other.map(skill => (
-            <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">{skill.name}</span>
-                <span class="skill-years">{skill.years} years</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" style={`width: ${skill.level}%`}></div>
-              </div>
+            <div class="skill-badge">
+              <span class="skill-name">{skill.name}</span>
+              <span class="skill-years">{skill.years} yrs</span>
             </div>
           ))}
         </div>
@@ -176,74 +156,39 @@ import { SKILLS } from '../consts';
   
   .skills-list {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
+    flex-wrap: wrap;
+    gap: var(--space-md);
   }
   
-  .skill-item {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-  }
-  
-  .skill-header {
-    display: flex;
-    justify-content: space-between;
+  .skill-badge {
+    display: inline-flex;
     align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) var(--space-md);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+  }
+  
+  .skill-badge:hover {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: var(--color-accent-purple);
+    transform: translateY(-2px);
   }
   
   .skill-name {
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
     color: var(--color-text-primary);
   }
   
   .skill-years {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
+    font-size: var(--font-size-xs);
+    color: var(--color-accent-cyan);
     font-family: var(--font-mono);
-  }
-  
-  .skill-bar {
-    height: 8px;
-    background: var(--color-bg-tertiary);
-    border-radius: var(--radius-full);
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .skill-progress {
-    height: 100%;
-    background: var(--gradient-primary);
-    border-radius: var(--radius-full);
-    transition: width 1s ease-out;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .skill-progress::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.3),
-      transparent
-    );
-    animation: shimmer 2s infinite;
-  }
-  
-  @keyframes shimmer {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(100%);
-    }
+    padding-left: var(--space-xs);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   @media (max-width: 768px) {
@@ -261,31 +206,3 @@ import { SKILLS } from '../consts';
   }
 </style>
 
-<script>
-  // Animate skill bars on scroll
-  const observerOptions = {
-    threshold: 0.2,
-    rootMargin: '0px 0px -100px 0px'
-  };
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const progressBars = entry.target.querySelectorAll('.skill-progress');
-        progressBars.forEach(bar => {
-          const width = bar.style.width;
-          bar.style.width = '0%';
-          setTimeout(() => {
-            bar.style.width = width;
-          }, 100);
-        });
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-  
-  const skillsSection = document.querySelector('.skills-section');
-  if (skillsSection) {
-    observer.observe(skillsSection);
-  }
-</script>
